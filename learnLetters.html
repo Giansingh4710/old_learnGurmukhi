@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letters</title>
+  </head>
+  <body>
+    <h1>Learn Letters</h1>
+    <form onsubmit="displayWord(event)">
+      <label for="tillWhichLine">Choose the line till upto you know</label>
+      <select id="tillWhichLine">
+        <option value="line1">ੳਅੲਸਹ</option>
+        <option value="line2">ਕਖਗਘਙ</option>
+        <option value="line3">ਚਛਜਝਞ</option>
+        <option value="line4">ਟਠਡਢਣ</option>
+        <option value="line5">ਤਥਦਧਨ</option>
+        <option value="line6">ਪਫਬਭਮ</option>
+        <option value="line7">ਯਰਲਵੜ</option>
+      </select>
+      <br/>
+      <label for="wordLen">Choose how long you want the word to be</label>
+      <select id="wordLen">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <br/>
+      <input type="submit" value="SUBMIT"/>
+    </form>
+    <h1 id="ans"></h1>
+  </body>
+  <script src="./script.js"></script>
+  </body>
+</html>
