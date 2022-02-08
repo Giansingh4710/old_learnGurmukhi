@@ -4,5 +4,5 @@ I made this site to help people who are learning Gurmukhi. There are 3 main thin
 2. Learn the days of the week in Gurmukhi
 3. Learn the Numbers in Gurmukhi
 
-https://giansingh4710.github.io/learnGurmukhi/
+link-to-the-website=https://giansingh4710.github.io/learnGurmukhi/
 ![image](https://user-images.githubusercontent.com/73843250/150194076-302c88a4-0b55-4316-aefc-53133f5151ac.png)
