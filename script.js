@@ -284,31 +284,33 @@ const NUMS = {
   100_000: 'ਲੱਖ',
   10_000_000: 'ਕਰੋੜ',
   1_000_000_000: 'ਅਰਬ', // 1 billion
-  1_000_000_000_000: 'ਖਰਬ', // 1 trillion
-  1_000_000_000_000_000: 'ਨੀਲ', // 1 quadrillion
+  // 1_000_000_000_000: 'ਖਰਬ', // 1 trillion
+  // 1_000_000_000_000_000: 'ਨੀਲ', // 1 quadrillion
 }
+
 function num_pronunciation(num) {
   num = num.replace(/^0+/, '') // remove leading zeros
   let pun_num = ''
-  if (num.length === 1 || num.length === 2 || num in NUMS) {
+  if (num in NUMS) {
     pun_num = NUMS[num]
   } else if (num.length === 3) {
     pun_num = NUMS[num[0]] + ' ' + NUMS['100'] + ' ' + num_pronunciation(num.substring(1))
-  } else if (num.length === 4) {
-    pun_num = NUMS[num[0]] + ' ' + NUMS['1000'] + ' ' + num_pronunciation(num.substring(1))
-  } else if (num.length === 5) {
-    pun_num = NUMS[num.substring(0, 2)] + ' ' + NUMS['1000'] + ' ' + num_pronunciation(num.substring(2))
-  } else if (num.length === 6) {
-    pun_num = NUMS[num[0]] + ' ' + NUMS['100000'] + ' ' + num_pronunciation(num.substring(1))
-  } else if (num.length === 7) {
-    pun_num = NUMS[num.substring(0, 2)] + ' ' + NUMS['100000'] + ' ' + num_pronunciation(num.substring(2))
-  } else if (num.length === 8) {
-    pun_num = NUMS[num[0]] + ' ' + NUMS['10000000'] + ' ' + num_pronunciation(num.substring(1))
-  } else if (num.length === 9) {
-    pun_num = NUMS[num.substring(0, 2)] + ' ' + NUMS['10000000'] + ' ' + num_pronunciation(num.substring(2))
-  } else if (num.length === 10) {
-    pun_num = NUMS[num[0]] + ' ' + NUMS['1000000000'] + ' ' + num_pronunciation(num.substring(1))
+  } else if (num.length < 12) {
+    const odd_len = num.length % 2 === 1
+    let prefix;
+    let suffix;
+    const chunk = '1' + '0'.repeat(odd_len ? num.length - 2 : num.length - 1)
+    const middle = NUMS[chunk]
+    if (odd_len) {
+      prefix = NUMS[num.substring(0, 2)]
+      suffix = num_pronunciation(num.substring(2))
+    }else{
+      prefix = NUMS[num[0]]
+      suffix = num_pronunciation(num.substring(1))
+    }
+    pun_num = prefix + ' ' + middle + ' ' + suffix
   }
+  // NUMS[num] = pun_num
   return pun_num
 }
 
