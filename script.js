@@ -1,5 +1,4 @@
-//for index.html
-function displayWord(e) {
+function show_ans_letters() {
   const ALL_LETTERS = "ੳਅੲਸਹਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨਪਫਬਭਮਯਰਲਵੜ";
   const ALL_LETTERS_WITHOUT_HARD = "ੳਅੲਸਹਕਖਗਘਚਛਜਝਞਟਠਡਢਤਥਦਧਨਪਫਬਭਮਯਰਲਵੜ"; //no :ਙ,ਞ
   //https://www.discoversikhism.com/punjabi/gurmukhi_random_letter_sequence_generator.html
@@ -19,8 +18,7 @@ function displayWord(e) {
     line6,
     line7,
   };
-  e.preventDefault();
-  const lineNum = document.getElementById("tillWhichLine").value;
+  const lineNum = document.getElementById("tillWhichLine_letters").value;
   const wordLength = parseInt(document.getElementById("wordLen").value);
   //   const hardLetters = document.getElementById("hardLetters");
 
@@ -33,11 +31,10 @@ function displayWord(e) {
       Math.floor(Math.random() * validLetters.length)
     );
   }
-  document.getElementById("ans").innerHTML = punjVer;
+  document.getElementById("letters_ans").innerHTML = punjVer;
 }
 
-//for learnDays.html
-function showDayOfWeek(e) {
+function show_ans_week() {
   const engToPunj = {
     Monday: "ਸੋਮਵਾਰ - Somvar",
     Tuesday: "ਮੰਗਲਵਾਰ - Mangalvar",
@@ -48,32 +45,15 @@ function showDayOfWeek(e) {
     Sunday: "ਐਤਵਾਰ - Attvar",
   };
 
-  let engVer;
-  let punjVer;
-  if (e === "rand") {
+  let engVer = document.getElementById("dayOfWeek").value;
+  if (engVer === "Random") {
     engVer = Object.keys(engToPunj)[Math.floor(Math.random() * 7)];
-  } else {
-    e.preventDefault();
-    engVer = document.getElementById("dayOfWeek").value;
   }
-  punjVer = engToPunj[engVer];
-  const display = `<div>
-  <button id="showHideBtnNum" onclick="showHideBtnWeek()">
-    Show/Hide
-  </button>
-  <p>${engVer} :</p>
-  <p hidden=true id="answerWeek">${punjVer}</p>
-  </div>`;
-
-  document.getElementById("ans").innerHTML = display;
-}
-function showHideBtnWeek() {
-  const a = document.getElementById("answerWeek");
-  a.hidden = !a.hidden;
+  const punjVer = engToPunj[engVer];
+  document.getElementById("day_of_week_ans").innerHTML =  `${engVer} : ${punjVer}`;
 }
 
-//for learnNums.html
-function showNum(e) {
+function show_ans_numbers(num) {
   const engToPunj = {
     1: ["One", "੧", "Ikk", "ਇੱਕ"],
     2: ["Two", "੨", "Do", "ਦੋ"],
@@ -177,43 +157,14 @@ function showNum(e) {
     100: ["Hundred", "੧੦੦", "So", "ਸੌ"],
   };
 
-  let engVer;
-  let punjVer;
-  if (e === "rand") {
+  let engVer = num;
+  if (num === "rand") {
     engVer = Object.keys(engToPunj)[Math.floor(Math.random() * 100)];
-  } else {
-    e.preventDefault();
-    engVer = document.getElementById("numInput").value;
-    console.log(engVer);
   }
-  punjVer = engToPunj[engVer];
-  const display = `
-  <div>
-    <button id="showHideBtnNum" onclick="showHideBtnNum()">
-      Show/Hide
-    </button>
-    <p>${engVer} :</p>
-    <div hidden=true id="answerWeek">
-      <div id='punjabiAns'>
-        ${punjVer[3]}
-      </div>
-      <button id='showAll' onclick="showAll('${punjVer}')">
-        show all
-      </button>
-    </div>
-  </div>`;
+  let punjVer = engToPunj[engVer];
+  document.getElementById("numbers_ans").innerHTML = `${engVer} : ${punjVer}`
+}
 
-  document.getElementById("ans").innerHTML = display;
-}
-function showHideBtnNum() {
-  const a = document.getElementById("answerWeek");
-  a.hidden = !a.hidden;
-}
-function showAll(ans) {
-  console.log(ans);
-  document.getElementById("punjabiAns").innerText = ans;
-  document.getElementById("showAll").hidden = true;
-}
 function showAllNumbersTable() {
   const a = document.getElementById("allNumsTable");
   a.hidden = !a.hidden;
