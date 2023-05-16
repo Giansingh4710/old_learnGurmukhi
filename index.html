@@ -8,7 +8,7 @@
 
   <body style="padding-left: 1%">
     <div id="letters">
-      <h1>Learn Letters</h1>
+      <h3>Learn Letters</h3>
       <select id="tillWhichLine_letters" onchange="show_ans_letters()">
         <option value="line1">ੳ ਅ ੲ ਸ ਹ</option>
         <option value="line2">ਕ ਖ ਗ ਘ ਙ</option>
@@ -25,12 +25,12 @@
         <option value="4">4</option>
       </select>
       <button onclick="show_ans_letters()">SUBMIT</button>
-      <h1 id="letters_ans"></h1>
+      <h3 id="letters_ans"></h3>
     </div>
     <hr />
 
     <div id="days_of_week">
-      <h1>Days of the Week</h1>
+      <h3>Days of the Week</h3>
       <!-- <label for="dayOfWeek">Choose the Name of the day</label> -->
       <select id="dayOfWeek" onchange="show_ans_week()">
         <option value="Monday">Monday</option>
@@ -48,11 +48,11 @@
     <hr />
 
     <div id="numbers">
-      <h1>Numbers in Gurmukhi</h1>
+      <h3>Numbers in Gurmukhi</h3>
       <label for="numInput">Enter a Number:</label>
-      <input onchange="show_ans_numbers(this.value)"  id="numInput" type="number" min="0" max="100" />
+      <input oninput="show_ans_numbers(this.value)"  id="numInput"/>
       <button onclick="show_ans_numbers('rand')">Random</button>
-      <h1 id="numbers_ans"></h1>
+      <div id="numbers_ans"></div>
 
       <button id="showAllNumbersBtn" onclick="showAllNumbersTable()">
         Show all the Numbers
