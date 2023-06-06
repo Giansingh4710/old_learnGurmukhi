@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gurbani Word Search</title>
+    <script src="./data.js"></script>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+     tbody > tr {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Gurbani Word Search</h1>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search for Gurbani words"
+    />
+    <button onclick="searchWords()">Sumbit Query</button>
+    <h3 id="resultInfo"></h3>
+
+    <table id="wordTable">
+      <thead>
+        <tr>
+          <th>Word</th>
+          <th>Gurmukhi</th>
+          <th>Roman</th>
+          <th>English</th>
+          <th>Mahankosh</th>
+          <th>ID</th>
+        </tr>
+      </thead>
+      <tbody id="wordsTableBody"></tbody>
+    </table>
+  </body>
+
+  <script>
+    const wordsTableBody = document.getElementById('wordsTableBody')
+    const searchInput = document.getElementById('searchInput')
+    const resultInfo = document.getElementById('resultInfo')
+    const theTable = document.getElementById('wordTable')
+    theTable.style.display = 'none'
+
+
+    function appendItem(word) {
+      const fragment = document.createDocumentFragment()
+
+      const row = document.createElement('tr')
+
+      const wordCell = document.createElement('td')
+      wordCell.textContent = word.word
+      row.appendChild(wordCell)
+
+      const gurmukhiCell = document.createElement('td')
+      gurmukhiCell.textContent = word.gurmukhi
+      row.appendChild(gurmukhiCell)
+
+      const romanCell = document.createElement('td')
+      romanCell.textContent = word.roman
+      row.appendChild(romanCell)
+
+      const englishCell = document.createElement('td')
+      englishCell.textContent = word.english || ''
+      row.appendChild(englishCell)
+
+      const mahankoshCell = document.createElement('td')
+      mahankoshCell.textContent = word.mahankosh
+      row.appendChild(mahankoshCell)
+
+      const idCell = document.createElement('td')
+      idCell.textContent = word.id
+      row.appendChild(idCell)
+
+      fragment.appendChild(row)
+      wordsTableBody.appendChild(fragment)
+    }
+
+    function searchWords() {
+      const searchTerm = searchInput.value.trim().toLowerCase()
+
+      wordsTableBody.innerHTML = '' // Clear previous results
+
+      if (searchTerm !== '') {
+        // wrap this in a try catch block
+        const filteredWords = SEARCH_GURBANI_WORDS.filter((word) => {
+          const wordValues = Object.values(word)
+          return wordValues.some((value) => {
+            return value.toLowerCase().includes(searchTerm)
+          })
+        })
+
+        if (filteredWords.length > 0) {
+          filteredWords.forEach((word) => {
+            appendItem(word)
+            // const resultItem = document.createElement('div')
+            // resultItem.textContent = word.word
+            // wordsTableBody.appendChild(resultItem)
+          })
+          resultInfo.innerText = 'Results: ' + filteredWords.length + ' words found.'
+          theTable.style.display = 'block'
+        } else {
+          // noResultsMessage.textContent = 'No matching words found.'
+          theTable.style.display = 'none'
+          resultInfo.textContent = 'No matching words found.'
+        }
+      }
+    }
+  </script>
+</html>

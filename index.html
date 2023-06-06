@@ -50,7 +50,7 @@
     <div id="numbers">
       <h3>Numbers in Gurmukhi</h3>
       <label for="numInput">Enter a Number:</label>
-      <input oninput="show_ans_numbers(this.value)"  id="numInput"/>
+      <input oninput="show_ans_numbers(this.value)" id="numInput" />
       <button onclick="show_ans_numbers('rand')">Random</button>
       <div id="numbers_ans"></div>
 
@@ -870,6 +870,21 @@
         </tbody>
       </table>
     </div>
+    <hr />
+
+    <div id="words">
+      <a href="./gurbaniWords/">Words</a> Scraped from searchgurbani.com
+    </div>
+    <hr />
+
+    <div id="Seach_Gurbani_Words">
+      <ul id="output"></ul>
+    </div>
   </body>
   <script src="./script.js"></script>
+  <script>
+    let a = SEARCH_GURBANI_WORDS
+    const outputElement = document.getElementById('output')
+    // SEARCH_GURBANI_WORDS.forEach((item) => {})
+  </script>
 </html>

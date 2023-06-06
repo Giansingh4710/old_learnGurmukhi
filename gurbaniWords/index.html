@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gurbani Words</title>
+
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      tbody > tr {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Gurbani Words</h1>
+    <a href="./searchWords.html">Search for Words</a>
+    <div>
+      <table id="wordTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>English</th>
+            <th>Gurmukhi</th>
+            <th>Mahankosh</th>
+            <th>Roman</th>
+            <th>Word</th>
+          </tr>
+        </thead>
+        <tbody id="wordsTableBody"></tbody>
+      </table>
+    </div>
+
+    <script src="./data.js"></script>
+    <script>
+      const tableBody = document.getElementById('wordsTableBody')
+      const tableHeight = document.getElementById('wordTable').clientHeight
+
+      function renderRows(startIndex, endIndex) {
+        const fragment = document.createDocumentFragment()
+
+        for (let i = startIndex; i < endIndex; i++) {
+          const word = SEARCH_GURBANI_WORDS[i]
+
+          const row = document.createElement('tr')
+
+          const idCell = document.createElement('td')
+          // idCell.textContent = word.id
+          idCell.textContent = i + 1
+          row.appendChild(idCell)
+
+          const englishCell = document.createElement('td')
+          englishCell.textContent = word.english || ''
+          row.appendChild(englishCell)
+
+          const gurmukhiCell = document.createElement('td')
+          gurmukhiCell.textContent = word.gurmukhi
+          row.appendChild(gurmukhiCell)
+
+          const mahankoshCell = document.createElement('td')
+          mahankoshCell.textContent = word.mahankosh
+          row.appendChild(mahankoshCell)
+
+          const romanCell = document.createElement('td')
+          romanCell.textContent = word.roman
+          row.appendChild(romanCell)
+
+          const wordCell = document.createElement('td')
+          wordCell.textContent = word.word
+          row.appendChild(wordCell)
+
+          fragment.appendChild(row)
+        }
+
+        tableBody.appendChild(fragment)
+      }
+
+      function isElementVisible(element) {
+        const rect = element.getBoundingClientRect()
+        const viewportHeight =
+          window.innerHeight || document.documentElement.clientHeight
+        return rect.top >= 0 && rect.left >= 0 && rect.bottom <= viewportHeight
+      }
+
+      function scrollToBottom() {
+        const scrollInterval = 10 // Scroll interval in milliseconds (adjust as needed)
+        setInterval(() => {
+          window.scrollTo({
+            top: window.pageYOffset + window.innerHeight,
+            // behavior: 'smooth',
+          })
+        }, scrollInterval)
+      }
+
+      let index_of_last_element = 100
+      renderRows(index_of_last_element - 100, index_of_last_element)
+
+      window.addEventListener('scroll', () => {
+        const tableHeight = document.getElementById('wordTable').clientHeight
+        const tableBodyHeight =
+          document.getElementById('wordsTableBody').clientHeight
+        const scrollPosition = window.scrollY
+        const scrollHeight = window.innerHeight
+        const scrollBottom = scrollPosition + scrollHeight
+        const lastElement = document.getElementById('wordsTableBody').lastChild
+        const lastElementBottom =
+          lastElement.offsetTop + lastElement.clientHeight
+        const lastElementVisible = isElementVisible(lastElement)
+
+        if (
+          lastElementVisible &&
+          index_of_last_element < SEARCH_GURBANI_WORDS.length
+        ) {
+          new_last_index =
+            index_of_last_element + 100 > SEARCH_GURBANI_WORDS.length
+              ? SEARCH_GURBANI_WORDS.length
+              : index_of_last_element + 100
+
+          renderRows(index_of_last_element, new_last_index)
+          console.log('End Index: ' + new_last_index)
+          index_of_last_element = new_last_index
+        }
+      })
+    </script>
+  </body>
+</html>
