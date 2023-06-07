@@ -8,4 +8,4 @@ There are 3 main things you can do by using this website.
 2.  Learn the days of the week in Gurmukhi
 3.  Learn the Numbers in Gurmukhi
 
-![image](https://user-images.githubusercontent.com/73843250/150194076-302c88a4-0b55-4316-aefc-53133f5151ac.png)
+![Screenshot 2023-06-06 at 11 43 50 PM](https://github.com/Giansingh4710/IT202-003/assets/73843250/a929e13c-edc7-44f5-bee5-e51bc7e9f007)
