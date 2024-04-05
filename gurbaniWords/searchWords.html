@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Gurbani Word Search</title>
-    <script src="./data.js"></script>
     <style>
       table {
         border-collapse: collapse;
@@ -21,7 +20,7 @@
       id="searchInput"
       placeholder="Search for Gurbani words"
     />
-    <button onclick="searchWords()">Sumbit Query</button>
+    <button id="submitQuery">Sumbit Query</button>
     <h3 id="resultInfo"></h3>
 
     <table id="wordTable">
@@ -39,19 +38,21 @@
     </table>
   </body>
 
-  <script>
+  <script type="module">
+    import SEARCH_GURBANI_WORDS from './data.mjs'
+
     const wordsTableBody = document.getElementById('wordsTableBody')
     const searchInput = document.getElementById('searchInput')
     const resultInfo = document.getElementById('resultInfo')
     const theTable = document.getElementById('wordTable')
     theTable.style.display = 'none'
 
+    document.getElementById('submitQuery').addEventListener('click', searchWords)
+
 
     function appendItem(word) {
       const fragment = document.createDocumentFragment()
-
       const row = document.createElement('tr')
-
       const wordCell = document.createElement('td')
       wordCell.textContent = word.word
       row.appendChild(wordCell)

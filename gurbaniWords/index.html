@@ -33,8 +33,9 @@
       </table>
     </div>
 
-    <script src="./data.js"></script>
-    <script>
+    <script type="module">
+      import SEARCH_GURBANI_WORDS from './data.mjs'
+
       const tableBody = document.getElementById('wordsTableBody')
       const tableHeight = document.getElementById('wordTable').clientHeight
 
