@@ -28,7 +28,7 @@
 ਕਦਮ,Step
 ਕਨ,ear
 ਚਲਨ,Conduct, behavior
-ਜਲਨ,Bruning,endurance
+ਜਲਨ,Burning,endurance
 ਤਪ,1. austerity, selfmortificaiton, worship, devotion, adoration, penance. 2. fever, heat
 ਦਸ,1. ten, 2. tell, say, speak
 ਦਰ,Door
