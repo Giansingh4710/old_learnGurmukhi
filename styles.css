@@ -1,0 +1,104 @@
+body {
+  font-family: "Roboto", sans-serif;
+  color: #2c3e50;
+  background-color: #ecf0f1;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  color: #34495e;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+.controls {
+  margin-bottom: 15px;
+}
+
+select,
+input[type="text"],
+button {
+  padding: 10px;
+  margin-right: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f7f9fa;
+  color: #2c3e50;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+details[open] summary {
+  color: #3498db;
+}
+
+header {
+  background-color: #f7f9fa;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+header p {
+  margin: 10px 0 0;
+  color: #34495e;
+}
