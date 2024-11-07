@@ -1,4 +1,4 @@
-[Learn Gurmukhi](https://giansingh4710.github.io/learnGurmukhi/)
+[Learn Gurmukhi](https://giansingh4710.github.io/old_learnGurmukhi/)
 
 I made this site to help people who are learning Gurmukhi.
 
